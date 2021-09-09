@@ -38,4 +38,13 @@ public class UserService {
     public void update(User user) {
         entityManager.merge(user);
     }
+
+    @Transactional
+    public User getUserByUsernamePassword(String username, String password) {
+        var query = entityManager.createQuery("FROM User WHERE username = :username AND password = :password");
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+        return (User) query.getSingleResult();
+    }
+
 }

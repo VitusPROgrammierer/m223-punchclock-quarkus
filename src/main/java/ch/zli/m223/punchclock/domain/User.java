@@ -4,29 +4,37 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
 public class User {
 
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "firstname")
+    @Column(nullable = false)
     private String firstname;
 
-    @Column(nullable = false, name = "lastname")
+    @Column(nullable = false)
     private String lastname;
 
-    @Column(nullable = false, name = "password")
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
     private String password;
 
     @OneToMany
-    @JoinColumn(name = "ticket_id")
-    private List<Ticket> ticket;
+    private List<Ticket> tickets;
 
     public Long getId() {
         return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setId(Long id) {
@@ -57,11 +65,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Ticket> getTicket() {
-        return ticket;
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
-    public void setTicket(List<Ticket> ticket) {
-        this.ticket = ticket;
+    public void setTickets(List<Ticket> ticket) {
+        this.tickets = ticket;
     }
 }

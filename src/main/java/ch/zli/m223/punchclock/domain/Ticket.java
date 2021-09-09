@@ -4,23 +4,20 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Ticket")
 public class Ticket {
 
     @Id
-    @Column(name = "ticket_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, name = "name")
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false, name = "description")
+    @Column(nullable = false)
     private String description;
 
     @OneToMany
-    @JoinColumn(name = "entry_id")
-    private List<Ticket> entry;
+    private List<Ticket> entries;
 
     public Long getId() {
         return id;
@@ -46,11 +43,11 @@ public class Ticket {
         this.description = description;
     }
 
-    public List<Ticket> getEntry() {
-        return entry;
+    public List<Ticket> getEntries() {
+        return entries;
     }
 
-    public void setEntry(List<Ticket> entry) {
-        this.entry = entry;
+    public void setEntries(List<Ticket> entry) {
+        this.entries = entry;
     }
 }
