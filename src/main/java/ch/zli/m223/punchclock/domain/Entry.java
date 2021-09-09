@@ -4,16 +4,18 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "Entry")
 public class Entry {
 
     @Id
+    @Column(name = "entry_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "checkIn")
     private LocalDateTime checkIn;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "checkOut")
     private LocalDateTime checkOut;
 
     public Long getId() {

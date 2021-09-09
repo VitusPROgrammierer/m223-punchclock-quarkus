@@ -1,6 +1,7 @@
 package ch.zli.m223.punchclock.service;
 
 import ch.zli.m223.punchclock.domain.Entry;
+import ch.zli.m223.punchclock.domain.Project;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -9,32 +10,32 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
-public class EntryService {
+public class ProjectService {
     @Inject
     private EntityManager entityManager;
 
-    public EntryService() {
+    public ProjectService() {
     }
 
-    @Transactional 
-    public Entry createEntry(Entry entry) {
-        entityManager.persist(entry);
-        return entry;
+    @Transactional
+    public Project createProject(Project project) {
+        entityManager.persist(project);
+        return project;
     }
 
     @Transactional
     public void delete(long id) {
-        entityManager.remove(entityManager.find(Entry.class, id));
+        entityManager.remove(entityManager.find(Project.class, id));
     }
 
     @SuppressWarnings("unchecked")
-    public List<Entry> findAll() {
-        var query = entityManager.createQuery("FROM Entry");
+    public List<Project> findAll() {
+        var query = entityManager.createQuery("FROM Project");
         return query.getResultList();
     }
 
     @Transactional
-    public void update(Entry entry) {
-        entityManager.merge(entry);
+    public void update(Project project) {
+        entityManager.merge(project);
     }
 }
