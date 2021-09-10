@@ -47,4 +47,12 @@ public class UserService {
         return (User) query.getSingleResult();
     }
 
+    @SuppressWarnings("unchecked")
+    public List<User> getUserWithNameLongerThan5() {
+        var query = entityManager.createQuery("FROM User user " +
+                "GROUP BY user.id " +
+                "HAVING (LENGTH(username)) > 5");
+        return query.getResultList();
+    }
+
 }

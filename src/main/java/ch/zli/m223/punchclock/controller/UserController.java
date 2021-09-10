@@ -29,6 +29,16 @@ public class UserController {
     }
 
     /**
+     * @return list of all users with name longer than 5
+     */
+    @GET
+    @Path("/special")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> listUserWithNameLongerThan5() {
+        return userService.getUserWithNameLongerThan5();
+    }
+
+    /**
      * @param user new user to add to db
      * @return user who got added
      */
