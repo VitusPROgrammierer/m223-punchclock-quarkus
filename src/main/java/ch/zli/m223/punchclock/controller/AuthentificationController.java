@@ -25,13 +25,17 @@ import io.smallrye.jwt.build.Jwt;
 * Do not use in productive environments!
 */
 
-@Tag(name = "Authorization", description = "Sample to manage Authorization")
+@Tag(name = "Authorization", description = "Manage Authorization")
 @Path("/auth")
 public class AuthentificationController {
 
     @Inject
     UserService userService;
-    
+
+    /**
+     * @param loginViewModel object with username and password
+     * @return LoginResultViewModel containing jwt token
+     */
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,6 +57,9 @@ public class AuthentificationController {
         throw new NotAuthorizedException("User ["+loginViewModel.getUsername()+"] not known");
     }
 
+    /**
+     * @param user new user who signedUp
+     */
     @POST
     @Path("/signUp")
     @Consumes(MediaType.APPLICATION_JSON)

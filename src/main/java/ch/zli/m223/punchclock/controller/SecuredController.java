@@ -16,7 +16,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 
-@Tag(name = "Secured", description = "An example of a secured endpoint")
+@Tag(name = "Secured", description = "Manage secured endpoint")
 @Path("/secured")
 @RequestScoped
 @RolesAllowed("User")
